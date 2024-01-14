@@ -36,5 +36,6 @@ pipeline {
                 echo 'cleaning up the applicaiton'
                 
             }
+        }
     }
 }
