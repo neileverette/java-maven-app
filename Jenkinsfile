@@ -1,40 +1,30 @@
 pipeline {
-
     agent any
-
     stages {
         stage("build") {
             steps {
-                echo 'building the applicaiton'
+                echo 'Building the applicaiton'
             }
         }
         stage("test") {
             steps {
-                echo 'testing the applicaiton'           
+                echo 'Testing the applicaiton'           
             }
         }
         stage("deploy") {
             steps {
-                echo 'deploying the applicaiton'
-                
-            }
-        }
-
-        stage("cleanup") {
-            steps {
-                echo 'cleaning up the applicaiton'
-                
+                echo 'Deploying the applicaiton'
             }
         }
     }
     post {
 
         always {
-            echo 'I always show up'
+            echo 'Post always shows up'
         }
 
         failure {
-            echo 'This failed'
+            echo 'Show this if the build fails'
 
         }
 
