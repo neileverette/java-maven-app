@@ -1,16 +1,26 @@
 pipeline {
     agent any
+    tools {
+        'maven-version-3.9.6'
+    }
     stages {
-        stage("build") {
+        stage("build jar") {
             steps {
-                echo 'Building the applicaiton'
+                echo 'Building the applicaiton with a jar file'
+                sh 'mvn package'
             }
         }
-        stage("test") {
+        stage("build image") {
             steps {
-                echo 'Testing the applicaiton'           
+                echo 'Building the application image file'
+                withCredentials([usernamePassword(credentialsID:'docker-hub-repo', passwordVariable: 'PASS'), usernameVariable:'USER']) {
+                    sh 'docker build -t docker neileverette/demo-app:jma-2.0 .'
+                    sh 'echo $PASS | docker login -u $USER --password-stdin'
+                    sh 'docker push neileverette/demo-app:jma-2.0'
+                }
             }
         }
+
         stage("deploy") {
             steps {
                 echo 'Deploying the applicaiton'
@@ -18,11 +28,9 @@ pipeline {
         }
     }
     post {
-
         always {
             echo 'Post always shows up'
         }
-
         failure {
             echo 'Show this if the build fails'
 
