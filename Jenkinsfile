@@ -13,7 +13,7 @@ pipeline {
         stage("build image") {
             steps {
                 echo 'Building the application image file'
-                withCredentials([usernamePassword(credentialsID:'docker-hub-repo', passwordVariable: 'PASS'), usernameVariable:'USER']) {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', passwordVariable: 'PASS', usernameVariable:'USER')]){
                     sh 'docker build -t docker neileverette/demo-app:jma-2.0 .'
                     sh 'echo $PASS | docker login -u $USER --password-stdin'
                     sh 'docker push neileverette/demo-app:jma-2.0'
