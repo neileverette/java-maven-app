@@ -31,6 +31,7 @@ pipeline {
                 expression {
                     BRANCH_NAME == "master"
                 }
+            }
             steps {
                 script{
                     gv.buildImage()
@@ -43,6 +44,7 @@ pipeline {
                 expression {
                     BRANCH_NAME == "master"
                 }
+            }
             steps {
                 script{
                     gv.deployApp()
