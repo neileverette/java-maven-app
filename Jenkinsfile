@@ -11,13 +11,11 @@ pipeline {
         stage("init"){
             steps{
                 script{
-                    echo "Executing branch pipeline for $BRANCH_NAME"
                     gv = load "script.groovy"
                 }
             }
         }
         stage("build jar") {
-
             steps {
                 script{
                     buildJar()
@@ -25,7 +23,6 @@ pipeline {
             }
         }
         stage("build image") {
-
             steps {
                 script{
                     buildImage()
@@ -34,7 +31,6 @@ pipeline {
         }
 
         stage("deploy") {
-
             steps {
                 script{
                     gv.deployApp()
