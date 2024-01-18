@@ -9,17 +9,11 @@ pipeline {
         stage("init"){
             steps{
                 script{
-                    echo "Executing branch pipeline for $BRANCH_NAME"
                     gv = load "script.groovy"
                 }
             }
         }
         stage("build jar") {
-            when {
-                expression {
-                    BRANCH_NAME == "master"
-                }
-            }
             steps {
                 script{
                     gv.buildJar()
@@ -27,11 +21,6 @@ pipeline {
             }
         }
         stage("build image") {
-            when {
-                expression {
-                    BRANCH_NAME == "master"
-                }
-            }
             steps {
                 script{
                     gv.buildImage()
@@ -40,11 +29,6 @@ pipeline {
         }
 
         stage("deploy") {
-            when {
-                expression {
-                    BRANCH_NAME == "master"
-                }
-            }
             steps {
                 script{
                     gv.deployApp()
