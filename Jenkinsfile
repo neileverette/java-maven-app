@@ -25,9 +25,9 @@ pipeline {
         stage("build and push image") {
             steps {
                 script{
-                    buildImage 'neileverette/demo-app:jma-3.1'
+                    buildImage 'neileverette/demo-app:jma-3.1.1'
                     dockerLogin()
-                    dockerPush 'neileverette/demo-app:jma-3.1'
+                    dockerPush 'neileverette/demo-app:jma-3.1.1'
                 }
             }
         }
