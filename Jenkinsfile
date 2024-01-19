@@ -27,7 +27,7 @@ pipeline {
                 script{
                     buildImage 'neileverette/demo-app:jma-3.1'
                     dockerLogin()
-                    dockerPush() 'neileverette/demo-app:jma-3.1'
+                    dockerPush 'neileverette/demo-app:jma-3.1'
                 }
             }
         }
