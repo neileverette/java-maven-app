@@ -1,0 +1,2 @@
+## README
+### Added auto trigger
