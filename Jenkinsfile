@@ -7,11 +7,24 @@ pipeline {
     stages {
 
         stage("init"){
-
             steps{
-                echo "init step"
+                echo "Initialize"
             }
         }
-
+        stage("build"){
+            steps{
+                echo "Build"
+            }
+        }
+        stage("test"){
+            steps{
+                echo "Testing"
+            }
+        }
+        stage("deploy"){
+            steps{
+                echo "Deploy"
+            }
+        }
     }
 }
