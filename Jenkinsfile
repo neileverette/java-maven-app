@@ -11,7 +11,6 @@ pipeline {
                 script{
                     gv = load "script.groovy"
                 }
-                echo "Initialize"
             }
         }
         stage("build"){
@@ -35,5 +34,12 @@ pipeline {
                 }
             }
         }
+          stage("cleanup"){
+                    steps{
+                        script{
+                            gv.cleanApp()
+                        }
+                    }
+                }
     }
 }

@@ -10,4 +10,8 @@ def deployApp(){
     echo "Deploying the application"
 }
 
+def cleanApp(){
+    echo "Cleaning things up"
+}
+
 return this
