@@ -13,7 +13,10 @@ pipeline {
         }
         stage("build"){
             steps{
-                echo "Build"
+                echo "---------------------------"
+                echo "Building $BRANCH_NAME"
+                echo "---------------------------"
+
             }
         }
         stage("test"){
