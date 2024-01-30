@@ -14,7 +14,7 @@ pipeline {
         stage("build"){
             steps{
                 echo "---------------------------"
-                echo "Building ${BRANCH_NAME}"
+                echo "Building"
                 echo "---------------------------"
 
             }
