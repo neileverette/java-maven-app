@@ -13,6 +13,9 @@ pipeline {
         }
         stage("build"){
             steps{
+                echo "---------------------------"
+                echo "Building"
+                echo "---------------------------"
 
             }
         }
