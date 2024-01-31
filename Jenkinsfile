@@ -1,7 +1,5 @@
 pipeline {
-    tools {
 
-        }
     agent any
 
     stages {
