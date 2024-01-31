@@ -1,14 +1,27 @@
-def gv
-
 pipeline {
+    tools {
+        maven 'maven-version-3.9.6'
+        }
     agent any
 
     stages {
-
-        stage("build"){
+        stage("build jar"){
             steps{
                 script{
-                    echo "build"
+                    echo "building jar"
+                    sh 'maven package'
+                }
+            }
+        }
+        stage("build image"){
+            steps{
+                script{
+                    echo "building the docker image"
+                    withCredentials([usernamePassword(credentialsID: 'docker-hub-repo', passwordVariable: 'PASS', usernameVariable: 'USER' )]){
+                        sh 'docker build -t neileverette/demo-app: jma-2.0 .'
+                        sh 'echo $PASS | docker login -u $USER --password-stdin'
+                        sh 'docker push neileverette/demo-app: jma-2.0'
+                    }
                 }
             }
         }
