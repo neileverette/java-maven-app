@@ -1,6 +1,6 @@
 pipeline {
     tools {
-        maven 'maven-version-3.9'
+
         }
     agent any
 
@@ -9,7 +9,7 @@ pipeline {
             steps{
                 script{
                     echo "building jar"
-                    sh 'maven package'
+
                 }
             }
         }
