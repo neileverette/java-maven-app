@@ -14,7 +14,7 @@ def buildImage(){
 
 def deployApp(){
     echo "Deploying the application"
-    echo 'Lets deploy this thing'
+    echo 'Another change'
 }
 
 def cleanApp(){
