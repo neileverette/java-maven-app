@@ -14,6 +14,7 @@ def buildImage(){
 
 def deployApp(){
     echo "Deploying the application"
+    echo 'Lets deploy this puppy'
 }
 
 def cleanApp(){
