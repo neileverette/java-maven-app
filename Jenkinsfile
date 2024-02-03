@@ -8,7 +8,6 @@ pipeline {
         stage("init"){
             steps{
                 script{
-                    echo "initializing"
                     gv = load "script.groovy"
                 }
             }
@@ -18,6 +17,7 @@ pipeline {
             steps{
                 script{
                     echo "building jar"
+                    sh 'mvn package'
                 }
             }
         }
