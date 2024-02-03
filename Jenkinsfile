@@ -1,8 +1,18 @@
+def gv
+
 pipeline {
 
     agent any
 
     stages {
+        stage("init"){
+            steps{
+                script{
+                    echo "initializing"
+                }
+            }
+        }
+
         stage("build jar"){
             steps{
                 script{
