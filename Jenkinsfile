@@ -1,10 +1,9 @@
 def gv
 
 pipeline {
+
     agent any
-    tools {
-        maven 'maven-version-3.9.6'
-    }
+
     stages {
         stage("init"){
             steps{
@@ -13,23 +12,24 @@ pipeline {
                 }
             }
         }
-        stage("build jar") {
-            steps {
+
+        stage("build jar"){
+            steps{
                 script{
                     gv.buildJar()
                 }
             }
         }
-        stage("build image") {
-            steps {
+
+        stage("build image"){
+            steps{
                 script{
                     gv.buildImage()
                 }
             }
         }
-
-        stage("deploy") {
-            steps {
+        stage("deploy"){
+            steps{
                 script{
                     gv.deployApp()
                 }
