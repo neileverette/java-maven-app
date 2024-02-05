@@ -13,7 +13,10 @@ def buildImage(){
 }
 
 def deployApp(){
-    echo "Deploying the application"
+    def dockerCMD = 'docker run -p 3080:3080 -d neileverette/demo-app:2.1'
+    sshagent(['ec2-server-key']) {
+        sh "ssh -o StrictHostKeyChecking=no ec2-user@18.222.122.196 ${dockerCMD}"
+}
 }
 
 def cleanApp(){
