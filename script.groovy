@@ -16,9 +16,11 @@ def deployApp(){
     echo '-------------------------'  
     echo 'deploying the app to EC2' 
     echo '-------------------------'   
-    def dockerCMD = 'docker run -p 3080:3080 -d neileverette/demo-app:jma-2.1'
+
     sshagent(['ec2-server-key']) {
-        sh "ssh -o StrictHostKeyChecking=no ec2-user@18.222.122.196 ${dockerCMD}"
+        def dockerComposeCmd = 'docker-compose -f docker-compose.yaml up --detach'
+        sh "scp docker-compose.yaml" ec2-user@18.222.122.196:/home/ec2-user
+        sh "ssh -o StrictHostKeyChecking=no ec2-user@18.222.122.196 ${dockerComposeCmd}"
         }
 }
 
