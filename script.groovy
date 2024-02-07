@@ -20,7 +20,7 @@ def deployApp(){
     def dockerComposeCmd = 'docker-compose -f docker-compose.yaml up --detach'
     sshagent(['ec2-server-key']) {
         sh 'scp docker-compose.yaml ec2-user@18.222.122.196:/home/ec2-user'
-        sh "ssh -o StrictHostKeyChecking=no ec2-user@18.222.122.196 ${dockerComposeCMD}"
+        sh "ssh -o StrictHostKeyChecking=no ec2-user@18.222.122.196 ${dockerComposeCmd}"
 }
 
 }
